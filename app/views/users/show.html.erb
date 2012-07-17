@@ -10,6 +10,22 @@
   <%= @user.password %>
 </p>
 
+</br>
+<table class="table table-striped table-condensed">
+  <tr>
+    <th>Albums</th>
+    <th></th>
+    <th></th>
+
+  <% @user.albums.each do |album| %>
+    <tr>
+      <td><%= link_to album.title, album %></td>
+      <td><%= link_to 'Edit', edit_album_path(album) %></td>
+      <td><%= link_to 'Delete Album', album, confirm: 'Are you sure?', method: :delete %></td>
+    </tr>
+  <% end %>
+  
+</table>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
