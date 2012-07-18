@@ -24,9 +24,20 @@
     </div>
 
     <div class="container">
+        <% if current_user %>
+          Hello <%= current_user.name %>
+          <%= link_to "Logout", session_path('logout'), method: 'delete' %>
+        <% else %>
+          <%= link_to "Login", new_session_path %> |
+          <%= link_to "Signup", new_user_path  %>
+        <% end %>
+      
       <div class="row">
         <div class="span9">
           <div class="well">
+            <% if notice %>
+              <p class="alert alert-info"><%= notice %></p>
+            <% end %>
             <%= yield %>
           </div>
         </div>
